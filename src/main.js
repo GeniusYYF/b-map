@@ -5,10 +5,11 @@ import store from './store'
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import "./style/index.scss"
 
 import vRegion from 'v-region'
 
+// 引入自定义iconfont
+import "@/assets/iconfont/iconfont.css";
 
 Vue.config.productionTip = false
 Vue.use(ElementUI, { size: "medium" });

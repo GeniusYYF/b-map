@@ -23,4 +23,43 @@ module.exports = {
   //     }
   //   }
   // },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/styles/variable.scss";`
+      },
+      scss: {
+        prependData: `@import "~@/styles/mixin.scss";`
+      },
+      scss: {
+        prependData: `@import "~@/styles/index.scss";`
+      },
+    }
+  },
+  chainWebpack: config => {
+    // 去除console与debugger
+    config.optimization
+      .minimizer('terser')
+      .tap(args => {
+        Object.assign(args[0].terserOptions.compress, {
+          warnings: false,
+          drop_console: true,
+          drop_debugger: true,
+          pure_funcs: ['console.log']
+        })
+        return args
+      });
+
+    const oneOfsMap = config.module.rule("scss").oneOfs.store;
+    oneOfsMap.forEach(item => {
+      item
+        .use("sass-resources-loader")
+        .loader("sass-resources-loader")
+        .options({
+          // Provide path to the file with resources
+          resources: ["./src/styles/variable.scss", "./src/styles/mixin.scss", "./src/styles/index.scss"]
+        })
+        .end();
+    });
+  },
 };

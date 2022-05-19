@@ -1,0 +1,6 @@
+@mixin box($activeColor: $defaultColor) {
+    box-shadow: inset 0 0 8px #1A3BFF !important;
+    border: 1px solid $borderColor  !important;
+    background-color: #343C5C !important;
+    color: $activeColor  !important;
+}

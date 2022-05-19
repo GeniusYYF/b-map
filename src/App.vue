@@ -1,14 +1,24 @@
 <template>
   <div id="app">
+    <b-header></b-header>
     <router-view />
   </div>
 </template>
+<script>
+import BHeader from "@/components/BHeader";
 
+export default {
+  components: { BHeader },
+};
+</script>
 <style lang="scss">
+/* @import url(); 引入css类 */
 html,
 body,
 #app {
-  height: 100%;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
   margin: 0px;
   padding: 0px;
 }
